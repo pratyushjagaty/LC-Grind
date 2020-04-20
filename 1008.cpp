@@ -12,21 +12,17 @@ class Solution
     int n;
 
 public:
-    TreeNode *constructTree(int &cur, int mini, int maxi, vector<int> &preorder)
-    {
-        if (cur >= n)
-        {
+    TreeNode *constructTree(int &cur, int mini, int maxi, vector<int> &preorder) {
+        if (cur >= n) {
             return NULL;
         }
 
         TreeNode *root = NULL;
 
-        if (preorder[cur] >= mini and preorder[cur] <= maxi)
-        {
+        if (preorder[cur] >= mini and preorder[cur] <= maxi) {
             root = new TreeNode(preorder[cur++]);
 
-            if (cur < n)
-            {
+            if (cur < n) {
                 root->left = constructTree(cur, mini, root->val, preorder);
                 root->right = constructTree(cur, root->val, maxi, preorder);
             }
@@ -35,8 +31,7 @@ public:
         return root;
     }
 
-    TreeNode *bstFromPreorder(vector<int> &preorder)
-    {
+    TreeNode *bstFromPreorder(vector<int> &preorder) {
         n = preorder.size();
         int start = 0;
         return constructTree(start, INT_MIN, INT_MAX, preorder);
