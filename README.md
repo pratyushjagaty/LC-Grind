@@ -1,1 +1,1 @@
-# LC-Grind
+# LeetCode - Interview Preparation 
